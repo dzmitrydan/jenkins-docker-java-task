@@ -20,15 +20,6 @@ pipeline {
             }
         }
 
-        stage('test') {
-            steps {
-                //sh 'mkdir TEST'
-                sh 'cd TEST'
-                git url: 'https://github.com/dzmitrydan/test.git'
-
-            }
-        }
-
         stage('checkout project repo') {
             steps {
                 git url: 'https://github.com/dzmitrydan/aircompany.git'
