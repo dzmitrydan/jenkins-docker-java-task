@@ -21,33 +21,33 @@ pipeline {
                 }
             }
         }
-        stage('test Jenkinsfile') {
+        stage('Test Jenkinsfile') {
             steps {
                 script {
                     sh 'gradle clean test'
                 }
             }
         }
-        stage('checkout project repo') {
+        stage('Checkout Project Repo') {
             steps {
                 git url: 'https://github.com/dzmitrydan/aircompany.git'
             }
         }
-        stage('execute unit tests') {
+        stage('Execute Unit Tests') {
             steps {
                 script {
                     sh 'mvn -f Java/pom.xml clean test'
                 }
             }
         }
-        stage('prepare build artifact') {
+        stage('Prepare Build Artifacts') {
             steps {
                 script {
                     sh 'mvn -f Java/pom.xml install'
                 }
             }
         }
-        stage('push into Artifactory') {
+        stage('Push into Artifactory') {
             steps {
                 script {
                     server = Artifactory.server 'artifactory'
@@ -62,7 +62,7 @@ pipeline {
                 }
             }
         }
-        stage('archive artifacts') {
+        stage('Archive Artifacts') {
             steps {
                 script {
                    def date = new Date()

@@ -8,36 +8,37 @@ import static org.assertj.core.api.Assertions.assertThat
 class JenkinsFileTest extends DeclarativePipelineTest {
 
     @Before
+    @Override
     void setUp() throws Exception {
         super.setUp()
     }
 
     @Test
-    void should_execute_without_errors() throws Exception {
-        runScript("JenkinsFileTest")
+    void checkExecutingWithoutErrors() throws Exception {
+        runScript('JenkinsFileTest')
         printCallStack()
         assertJobStatusSuccess()
     }
 
     @Test
-    void assert_callstack_example() throws Exception {
-        runScript("JenkinsFileTest")
+    void checkCallStackContainsMvnCleanTest() throws Exception {
+        runScript('JenkinsFileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertCallStackContains('sh(mvn -f Java/pom.xml clean test)')
     }
 
     @Test
-    void assert_callstack_example2() throws Exception {
-        runScript("JenkinsFileTest")
+    void checkCallStackContainsMvnPackage() throws Exception {
+        runScript('JenkinsFileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertCallStackContains('sh(mvn -f Java/pom.xml package)')
     }
 
     @Test
-    void advanced_assert_callstack_example() throws Exception {
-        runScript("JenkinsFileTest")
+    void checkCallStackContainsMvnPomXml() throws Exception {
+        runScript('JenkinsFileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertThat(helper.callStack.stream()
