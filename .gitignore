@@ -6,6 +6,7 @@ build/
 
 ### IntelliJ IDEA ###
 .idea/
+../../jenkins-task/.idea/
 .idea/codeStyles/
 *.iws
 *.iml
