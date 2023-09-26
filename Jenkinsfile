@@ -71,7 +71,7 @@ pipeline {
                    sh "ls -l"
                }
                 archiveArtifacts allowEmptyArchive: true,
-                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar', 'Java/target/surefire-reports/',
+                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar', '**/target/surefire-reports/**',
                 followSymlinks: false
             }
         }
