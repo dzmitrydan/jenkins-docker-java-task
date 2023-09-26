@@ -2,7 +2,7 @@ pipeline {
     agent {label 'jenkins_agent'}
     tools {
         maven 'maven3'
-        gradle 'gradle8'
+        //gradle 'gradle8'
     }
     stages {
         stage("Setup Parameters") {
@@ -22,10 +22,10 @@ pipeline {
             }
         }
         stage('test Jenkinsfile') {
-            steps {
-                script {
-                    sh 'gradle test'
-                }
+            if (isUnix()) {
+                sh './gradlew clean build'
+            } else {
+                bat 'gradlew.bat clean build'
             }
         }
         stage('checkout project repo') {
