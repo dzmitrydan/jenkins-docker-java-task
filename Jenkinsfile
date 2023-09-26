@@ -22,11 +22,7 @@ pipeline {
             }
         }
         stage('test Jenkinsfile') {
-            if (isUnix()) {
-                sh './gradlew clean build'
-            } else {
-                bat 'gradlew.bat clean build'
-            }
+            sh './gradlew clean build'
         }
         stage('checkout project repo') {
             steps {
