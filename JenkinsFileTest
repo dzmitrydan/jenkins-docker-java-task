@@ -1,0 +1,31 @@
+//jenkins file for testing framework
+
+pipeline {
+    agent any
+    tools {
+        maven '3.9.4'
+    }
+    stages {
+        stage('execute unit tests') {
+            steps {
+                script {
+                    sh "mvn -f Java/pom.xml clean test"
+                }
+            }
+        }
+        stage('build') {
+            steps {
+                script {
+                    sh "mvn -f Java/pom.xml package"
+                }
+            }
+        }
+        stage('push the artifact into Artifactory') {
+            steps {
+                archiveArtifacts allowEmptyArchive: true,
+                artifacts: '**/surefire-reports/**, **/aircompany-*.jar',
+                followSymlinks: false
+            }
+        }
+    }
+}
