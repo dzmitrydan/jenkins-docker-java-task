@@ -2,7 +2,7 @@ pipeline {
     agent {label 'jenkins_agent'}
     tools {
         maven 'maven3'
-        //gradle 'gradle8'
+        gradle 'gradle8'
     }
     stages {
         stage("Setup Parameters") {
