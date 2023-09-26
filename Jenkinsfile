@@ -2,7 +2,7 @@ pipeline {
     agent {label 'jenkins_agent'}
     tools {
         maven 'maven3'
-        //gradle 'gradle8'
+        gradle 'gradle8'
     }
     stages {
         stage("Setup Parameters") {
@@ -22,11 +22,12 @@ pipeline {
             }
         }
         stage('test Jenkinsfile') {
-        steps {
-                 script {
-                            sh './gradlew clean test'
-                        }
-          }
+            steps {
+                script {
+                    sh 'gradle clean test'
+                }
+            }
+        }
         stage('checkout project repo') {
             steps {
                 git url: 'https://github.com/dzmitrydan/aircompany.git'
