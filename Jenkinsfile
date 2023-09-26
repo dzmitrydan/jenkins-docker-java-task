@@ -22,7 +22,9 @@ pipeline {
             }
         }
         stage('test Jenkinsfile') {
-            sh './gradlew clean build'
+            script {
+                sh './gradlew clean build'
+            }
         }
         stage('checkout project repo') {
             steps {
