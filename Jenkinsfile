@@ -1,7 +1,9 @@
 pipeline {
     agent {label 'jenkins_agent'}
-    tools {maven 'maven3'}
-
+    tools {
+        maven 'maven3'
+        gradle 'gradle8'
+    }
     stages {
         stage("Setup Parameters") {
             steps {
@@ -19,29 +21,32 @@ pipeline {
                 }
             }
         }
-
+        stage('test Jenkinsfile') {
+            steps {
+                script {
+                    sh 'gradle test'
+                }
+            }
+        }
         stage('checkout project repo') {
             steps {
                 git url: 'https://github.com/dzmitrydan/aircompany.git'
             }
         }
-
         stage('execute unit tests') {
             steps {
                 script {
-                    sh "mvn -f Java/pom.xml clean test"
+                    sh 'mvn -f Java/pom.xml clean test'
                 }
             }
         }
-
         stage('prepare build artifact') {
             steps {
                 script {
-                    sh "mvn -f Java/pom.xml install"
+                    sh 'mvn -f Java/pom.xml install'
                 }
             }
         }
-
         stage('push into Artifactory') {
             steps {
                 script {
@@ -57,7 +62,6 @@ pipeline {
                 }
             }
         }
-
         stage('archive artifacts') {
             steps {
                 script {
