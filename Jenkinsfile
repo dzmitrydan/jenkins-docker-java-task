@@ -22,10 +22,11 @@ pipeline {
             }
         }
         stage('test Jenkinsfile') {
-            script {
-                sh './gradlew clean build'
-            }
-        }
+        steps {
+                 script {
+                            sh './gradlew clean test'
+                        }
+          }
         stage('checkout project repo') {
             steps {
                 git url: 'https://github.com/dzmitrydan/aircompany.git'
