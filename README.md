@@ -116,4 +116,11 @@ Jenkins settings fo Artifactory (System > JFrog)
 
 ![Jenkins-codenarc screenshot](readme-assets/jenkins-codenarc.png)
 
-
+Run tests:
+```
+./gradlew test
+```
+Run CodeNarc check:
+```
+./gradlew check
+```
