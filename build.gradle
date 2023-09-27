@@ -26,6 +26,7 @@ test {
 codenarc {
   toolVersion = '3.3.0'
   configFile = file('config/codenarc.groovy')
-  reportFormat = 'html'
+  //reportFormat = 'html'
+  reportFormat = 'xml'
   ignoreFailures = true
 }
