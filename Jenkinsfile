@@ -71,7 +71,7 @@ pipeline {
                    sh "ls -l"
                }
                 archiveArtifacts allowEmptyArchive: true,
-                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar',
+                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/TEST-JenkinsFileTest.xml, **/codenarc/test.html',
                 followSymlinks: false
             }
         }

@@ -1,6 +1,7 @@
 plugins {
   id "java"
   id "groovy"
+  id 'codenarc'
 }
 
 repositories {
@@ -13,11 +14,18 @@ dependencies {
   testImplementation 'org.codehaus.groovy:groovy-all:3.0.9'
   testImplementation "junit:junit:4.13.2"
   testImplementation "com.lesfurets:jenkins-pipeline-unit:1.10"
-  implementation group: 'org.codenarc', name: 'CodeNarc', version: '3.3.0'
+  codenarc 'org.codenarc:CodeNarc:3.3.0'
 }
 
 test {
   testLogging {
     events "PASSED", "FAILED", "SKIPPED"
   }
+}
+
+codenarc {
+  toolVersion = '3.3.0'
+  configFile = file('config/codenarc.groovy')
+  reportFormat = 'html'
+  ignoreFailures = true
 }
