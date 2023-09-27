@@ -106,4 +106,14 @@ Jenkins settings fo Artifactory (System > JFrog)
 
 ![Artifactory screenshot](readme-assets/artifactory.png)
 
+### 4. Jenkins Pipeline Run
+![Jenkins_agent_logs screenshot](readme-assets/jenkins-agent-logs.png)
+
+### 5. Quality Gates (for project `jenkins-task`)
+- [CodeNarc](https://codenarc.org)
+- Warnings Next Generation Plugin
+- Tests for Groovy pipeline: [JenkinsPipelineUnit](https://github.com/jenkinsci/JenkinsPipelineUnit)
+
+![Jenkins-codenarc screenshot](readme-assets/jenkins-codenarc.png)
+
 
