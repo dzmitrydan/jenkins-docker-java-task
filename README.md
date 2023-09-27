@@ -90,11 +90,6 @@ Jenkins dashboard
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-01.png)
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-02.png)
 
-##### Trigger a Jenkins build on Git commit
-- Configuring Jenkins (Manage Jenkins > Configure > System Advanced > Check 'Specify another hook url' > Copy this UR)
-- Configuring GitHub Repository (add Webhook in the repository Settings)
-- Configuring Jenkins Pipeline (Project configuration > Build Triggers > Github hook trigger for GITScm Polling)
-
 ### 3. Artifactory
 Аor the project was used cloud version (14-Day Trial)
 Jenkins settings fo Artifactory (System > JFrog)
@@ -107,7 +102,12 @@ Jenkins settings fo Artifactory (System > JFrog)
 ![Artifactory screenshot](readme-assets/artifactory.png)
 
 ### 4. Jenkins Pipeline Run
+Trigger a Jenkins build on Git commit
+- Configuring Jenkins (Manage Jenkins > Configure > System Advanced > Check 'Specify another hook url' > Copy this UR)
+- Configuring GitHub Repository (add Webhook in the repository Settings)
+- Configuring Jenkins Pipeline (Project configuration > Build Triggers > Github hook trigger for GITScm Polling)
 ![Jenkins_agent_logs screenshot](readme-assets/jenkins-agent-logs.png)
+![Pipeline screenshot](readme-assets/jenkins-pipeline-03.png)
 
 ### 5. Quality Gates (for project `jenkins-task`)
 - [CodeNarc](https://codenarc.org)
