@@ -2,7 +2,7 @@ pipeline {
     agent {label 'jenkins_agent'}
     tools {
         maven 'maven3'
-        gradle 'gradle8'
+        //gradle 'gradle8'
     }
     stages {
         stage("Setup Parameters") {
@@ -24,7 +24,7 @@ pipeline {
         stage('Pipeline Quality Gates') {
             steps {
                 script {
-                    sh 'gradle clean check'
+                    sh './gradlew clean check'
                 }
             }
         }
