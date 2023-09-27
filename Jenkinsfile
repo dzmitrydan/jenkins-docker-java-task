@@ -21,10 +21,10 @@ pipeline {
                 }
             }
         }
-        stage('Test Jenkinsfile') {
+        stage('Pipeline Quality Gates') {
             steps {
                 script {
-                    sh 'gradle clean test'
+                    sh 'gradle clean check'
                 }
             }
         }
