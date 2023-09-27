@@ -2,7 +2,6 @@ pipeline {
     agent {label 'jenkins_agent'}
     tools {
         maven 'maven3'
-        //gradle 'gradle8'
     }
     stages {
         stage("Setup Parameters") {
@@ -69,11 +68,17 @@ pipeline {
                    def data = "app version ${VERSION}\nhttps://blesstask.jfrog.io/ui/repos/tree/General/aircompany/${VERSION}\n" + date
                    writeFile(file: 'ARTIFACTORY.txt', text: data)
                    sh "ls -l"
-               }
+                }
                 archiveArtifacts allowEmptyArchive: true,
-                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/TEST-JenkinsFileTest.xml, **/codenarc/test.html',
+                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/test/TEST-*.xml',
                 followSymlinks: false
             }
+        }
+    }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+            recordIssues(tools: [codeNarc(pattern: '**/codenarc/test.xml', reportEncoding: 'UTF-8')])
         }
     }
 }
