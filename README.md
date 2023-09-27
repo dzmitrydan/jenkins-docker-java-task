@@ -69,8 +69,8 @@ ssh-keygen -t rsa -f jenkins_agent
   - Java Path: `/opt/java/openjdk/bin/java`; 
   - Connection Timeout Seconds: `60`; 
   - Max Number of Retries: `10`; 
-  - Seconds To Wait Between Retries: `10`; 
-  - Use TCP_NODELAY flag on the SSH connection: check
+  - Seconds To Wait Between Retries: `15`; 
+  - `Use TCP_NODELAY flag on the SSH connection`: check
   
 ![Nodes screenshot](readme-assets/jenkins-nodes.png)
 
@@ -83,6 +83,13 @@ ssh-keygen -t rsa -f jenkins_agent
 
 The `VERSION` with the artifact uploaded to the Artifactory is putted in the `ARTIFACTORY.txt` in the Archive Artifacts.
 
+ARTIFACTORY.txt:
+```
+app version 2.19
+https://blesstask.jfrog.io/ui/repos/tree/General/aircompany/none
+Wed Sep 27 21:24:33 UTC 2023
+```
+
 Jenkins dashboard
 - This chart **Test Result Trend** shows the result of passing Unit tests
 - This chart **CodeNarc Warnings Trend** shows the result CodeNarc check
@@ -91,21 +98,23 @@ Jenkins dashboard
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-02.png)
 
 ### 3. Artifactory
-Аor the project was used cloud version (14-Day Trial)
+Аor the project was used cloud version (14-Day Trial).
+
 Jenkins settings fo Artifactory (System > JFrog)
 - JFrog Platform Instances
-- Instance ID: artifactory
-- JFrog Platform URL: https://blesstask.jfrog.io
-- Username: username `for Artifactory`
-- Password: password `for Artifactory`
+  - Instance ID: `artifactory`
+  - JFrog Platform URL: `https://blesstask.jfrog.io`
+  - Username: username for Artifactory
+  - Password: password for Artifactory
 
 ![Artifactory screenshot](readme-assets/artifactory.png)
 
 ### 4. Jenkins Pipeline Run
 Trigger a Jenkins build on Git commit
-- Configuring Jenkins (Manage Jenkins > Configure > System Advanced > Check 'Specify another hook url' > Copy this UR)
+- Configuring Jenkins (Manage Jenkins > Configure > System Advanced > Check 'Specify another hook url' > Copy this URL)
 - Configuring GitHub Repository (add Webhook in the repository Settings)
 - Configuring Jenkins Pipeline (Project configuration > Build Triggers > Github hook trigger for GITScm Polling)
+
 ![Jenkins_agent_logs screenshot](readme-assets/jenkins-agent-logs.png)
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-03.png)
 
