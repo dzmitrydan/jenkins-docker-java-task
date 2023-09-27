@@ -1,29 +1,36 @@
 //jenkins file for testing framework
 
 pipeline {
-    agent any
+    agent {label 'jenkins_agent'}
     tools {
-        maven '3.9.4'
+        maven 'maven3'
     }
     stages {
-        stage('execute unit tests') {
+        stage('Pipeline Quality Gates') {
             steps {
                 script {
-                    sh "mvn -f Java/pom.xml clean test"
+                    sh './gradlew clean check'
                 }
             }
         }
-        stage('build') {
+        stage('Execute Unit Tests') {
             steps {
                 script {
-                    sh "mvn -f Java/pom.xml package"
+                    sh 'mvn -f Java/pom.xml clean test'
                 }
             }
         }
-        stage('push the artifact into Artifactory') {
+        stage('Prepare Build Artifacts') {
+            steps {
+                script {
+                    sh 'mvn -f Java/pom.xml install'
+                }
+            }
+        }
+        stage('Archive Artifacts') {
             steps {
                 archiveArtifacts allowEmptyArchive: true,
-                artifacts: '**/surefire-reports/**, **/aircompany-*.jar',
+                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/test/TEST-*.xml',
                 followSymlinks: false
             }
         }

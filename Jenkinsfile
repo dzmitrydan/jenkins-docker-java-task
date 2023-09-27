@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Checkout Project Repo') {
             steps {
-                git url: 'https://github.com/dzmitrydan/aircompany.git'
+                git branch: 'main', url: 'https://github.com/dzmitrydan/aircompany.git'
             }
         }
         stage('Execute Unit Tests') {

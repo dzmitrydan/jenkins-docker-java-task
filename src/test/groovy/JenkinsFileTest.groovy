@@ -29,11 +29,19 @@ class JenkinsFileTest extends DeclarativePipelineTest {
     }
 
     @Test
-    void checkCallStackContainsMvnPackage() throws Exception {
+    void checkCallStackContainsMvnInstall() throws Exception {
         runScript('JenkinsFileTest')
         printCallStack()
         assertJobStatusSuccess()
-        assertCallStackContains('sh(mvn -f Java/pom.xml package)')
+        assertCallStackContains('sh(mvn -f Java/pom.xml install)')
+    }
+
+    @Test
+    void checkCallStackContainsGradlew() throws Exception {
+        runScript('JenkinsFileTest')
+        printCallStack()
+        assertJobStatusSuccess()
+        assertCallStackContains('sh(./gradlew clean check)')
     }
 
     @Test

@@ -16,6 +16,7 @@ Additional Json Plugins
 * Gradle Plugin
 * Maven Integration plugin
 * Pipeline
+* Warnings Next Generation Plugin
 
 #### Install Jenkins with Agent by Docker Compose
 ```
