@@ -95,7 +95,6 @@ Jenkins dashboard
 - This chart **CodeNarc Warnings Trend** shows the result CodeNarc check
 
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-01.png)
-![Pipeline screenshot](readme-assets/jenkins-pipeline-02.png)
 
 ### 3. Artifactory
 Аor the project was used cloud version (14-Day Trial).
@@ -116,7 +115,7 @@ Trigger a Jenkins build on Git commit
 - Configuring Jenkins Pipeline (Project configuration > Build Triggers > Github hook trigger for GITScm Polling)
 
 ![Jenkins_agent_logs screenshot](readme-assets/jenkins-agent-logs.png)
-![Pipeline screenshot](readme-assets/jenkins-pipeline-03.png)
+![Pipeline screenshot](readme-assets/jenkins-pipeline-02.png)
 
 ### 5. Quality Gates (for project `jenkins-task`)
 - [CodeNarc](https://codenarc.org)

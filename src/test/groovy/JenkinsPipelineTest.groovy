@@ -5,25 +5,31 @@ import org.junit.Test
 
 import static org.assertj.core.api.Assertions.assertThat
 
-class JenkinsFileTest extends DeclarativePipelineTest {
+class JenkinsPipelineTest extends DeclarativePipelineTest {
 
     @Before
     @Override
     void setUp() throws Exception {
         super.setUp()
         helper.registerAllowedMethod('git', [Map], stringInterceptor)
+        helper.registerAllowedMethod('codeNarc', [Map], stringInterceptor)
+        helper.registerAllowedMethod('recordIssues', [Map], stringInterceptor)
+        helper.registerAllowedMethod('junit', [Map], stringInterceptor)
+        helper.registerAllowedMethod("parameters", [List])
+        helper.registerAllowedMethod('buildAddUrl', [Map], stringInterceptor)
+        helper.registerAllowedMethod('addDeployToDashboard', [Map], stringInterceptor)
     }
 
     @Test
     void checkExecutingWithoutErrors() throws Exception {
-        runScript('JenkinsFileTest')
+        runScript('JenkinsfileTest')
         printCallStack()
         assertJobStatusSuccess()
     }
 
     @Test
     void checkCallStackContainsMvnCleanTest() throws Exception {
-        runScript('JenkinsFileTest')
+        runScript('JenkinsfileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertCallStackContains('sh(mvn -f Java/pom.xml clean test)')
@@ -31,7 +37,7 @@ class JenkinsFileTest extends DeclarativePipelineTest {
 
     @Test
     void checkCallStackContainsMvnInstall() throws Exception {
-        runScript('JenkinsFileTest')
+        runScript('JenkinsfileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertCallStackContains('sh(mvn -f Java/pom.xml install)')
@@ -39,7 +45,7 @@ class JenkinsFileTest extends DeclarativePipelineTest {
 
     @Test
     void checkCallStackContainsGradlew() throws Exception {
-        runScript('JenkinsFileTest')
+        runScript('JenkinsfileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertCallStackContains('sh(./gradlew clean check)')
@@ -47,7 +53,7 @@ class JenkinsFileTest extends DeclarativePipelineTest {
 
     @Test
     void checkCallStackContainsMvnPomXml() throws Exception {
-        runScript('JenkinsFileTest')
+        runScript('JenkinsfileTest')
         printCallStack()
         assertJobStatusSuccess()
         assertThat(helper.callStack.stream()

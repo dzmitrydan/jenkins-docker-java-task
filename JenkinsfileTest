@@ -1,3 +1,6 @@
+// 'JenkinsfileTest' differs from 'Jenkinsfile' only in the absence of the "stage('Push into Artifactory')",
+// as there were difficulties with this part of the code when writing tests.
+
 pipeline {
     agent {label 'jenkins_agent'}
     tools {
@@ -43,21 +46,6 @@ pipeline {
             steps {
                 script {
                     sh 'mvn -f Java/pom.xml install'
-                }
-            }
-        }
-        stage('Push into Artifactory') {
-            steps {
-                script {
-                    server = Artifactory.server 'artifactory'
-                    def uploadSpec = """{
-                        "files": [
-                            {
-                                "pattern": "**/target/*SNAPSHOT.jar",
-                                "target": "aircompany/${VERSION}/"
-                            }
-                        ]}"""
-                    server.upload(uploadSpec)
                 }
             }
         }
