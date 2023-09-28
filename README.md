@@ -75,13 +75,13 @@ ssh-keygen -t rsa -f jenkins_agent
 ![Nodes screenshot](readme-assets/jenkins-nodes.png)
 
 ### 2. Jenkins Pipeline Settings
-- Project is parametrized. The parameter `VERSION` is passed for the directory in the Artifactory.
+- The project is parameterized. The parameter `VERSION` is passed for the directory in the Artifactory.
 - Definition: `Pipeline script`
 - SCM: `Git`
 - Repository URL: project `jenkins-task` url
 - Branch Specified: `*/main`
 
-The `VERSION` with the artifact uploaded to the Artifactory is putted in the `ARTIFACTORY.txt` in the Archive Artifacts.
+The `VERSION` with the artifact uploaded to the Artifactory is put in the `ARTIFACTORY.txt` in the Archive Artifacts.
 
 ARTIFACTORY.txt:
 ```
@@ -97,9 +97,9 @@ Jenkins dashboard
 ![Pipeline screenshot](readme-assets/jenkins-pipeline-01.png)
 
 ### 3. Artifactory
-Аor the project was used cloud version (14-Day Trial).
+The Artifactory of the cloud version was used on the project (14-Day Trial).
 
-Jenkins settings fo Artifactory (System > JFrog)
+Jenkins settings for Artifactory (System > JFrog)
 - JFrog Platform Instances
   - Instance ID: `artifactory`
   - JFrog Platform URL: `https://blesstask.jfrog.io`
@@ -124,7 +124,7 @@ Trigger a Jenkins build on Git commit
 
 ![Jenkins-codenarc screenshot](readme-assets/jenkins-codenarc.png)
 
-Run tests:
+Run pipeline tests:
 ```
 ./gradlew test
 ```
