@@ -72,6 +72,9 @@ pipeline {
                 archiveArtifacts allowEmptyArchive: true,
                 artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/test/TEST-*.xml',
                 followSymlinks: false
+
+                buildAddUrl(title: 'Deploy to PROD', url: "/job/app-deploy/parambuild/?env=prod&version='123'")
+                addDeployToDashboard(env: 'ENV', buildNumber: '123')
             }
         }
     }

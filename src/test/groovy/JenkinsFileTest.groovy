@@ -11,6 +11,7 @@ class JenkinsFileTest extends DeclarativePipelineTest {
     @Override
     void setUp() throws Exception {
         super.setUp()
+        helper.registerAllowedMethod('git', [Map], stringInterceptor)
     }
 
     @Test
