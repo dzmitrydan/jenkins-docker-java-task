@@ -20,7 +20,7 @@
 - Docker with components is installed
 
 ### 1. Install and Run Jenkins With Docker Compose
-#### Install Jenkins by Docker Compose
+#### 1.1 Install Jenkins by Docker Compose
 Run Docker Compose:
 ```
 docker-compose -f jenkins-docker-compose.yml up
@@ -33,12 +33,12 @@ Open bash shell of docker container:
 ```
 docker exec -it jenkins bash
 ```
-#### Login and install suggested Jenkins plugins
+#### 1.2 Login and install suggested Jenkins plugins
 #### Install additional Jenkins Plugins
 - Artifactory Plugin
 - Warnings Next Generation Plugin
 
-#### Install Jenkins with Agent by Docker Compose
+#### 1.3 Install Jenkins with Agent by Docker Compose
 Run Docker Compose:
 ```
 docker-compose -f jenkins-agent-docker-compose.yml up
@@ -48,18 +48,18 @@ Stop Docker Compose:
 docker-compose -f jenkins-agent-docker-compose.yml down
 ```
 
-#### Generate SSH keys (public, private)
+#### 1.4 Generate SSH keys (public, private)
 ```
 ssh-keygen -t rsa -f jenkins_agent
 ```
 
-#### In the Jenkins settings (Global credentials) add private SSH keys
+#### 1.5 In the Jenkins settings (Global credentials) add private SSH keys
 - SSH `Username with private key`
 - ID: `jenkins_agent`
 - Username: `jenkins`
 - Enter private SSH key`
 
-#### Node settings:
+#### 1.6 Node settings:
 - Remote Root Directory: `/home/jenkins/agent`
 - Host: `agent`
 - Launch method: `Launch agents via SSH`
