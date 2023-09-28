@@ -34,7 +34,7 @@ Open bash shell of docker container:
 docker exec -it jenkins bash
 ```
 #### 1.2 Login and install suggested Jenkins plugins
-#### 1.3 Install additional Jenkins Plugins
+#### 1.3 Install additional Jenkins plugins
 - Artifactory Plugin
 - Warnings Next Generation Plugin
 
@@ -57,7 +57,7 @@ ssh-keygen -t rsa -f jenkins_agent
 - SSH `Username with private key`
 - ID: `jenkins_agent`
 - Username: `jenkins`
-- Enter private SSH key`
+- Enter private SSH key
 
 #### 1.7 Node settings:
 - Remote Root Directory: `/home/jenkins/agent`
@@ -67,9 +67,9 @@ ssh-keygen -t rsa -f jenkins_agent
 - Host Key Verification Strategy: `Non verifying Verification Strategy`
 - Advanced
   - Java Path: `/opt/java/openjdk/bin/java`; 
-  - Connection Timeout Seconds: `60`; 
-  - Max Number of Retries: `10`; 
-  - Seconds To Wait Between Retries: `15`; 
+  - Connection Timeout Seconds: `60`
+  - Max Number of Retries: `10`
+  - Seconds To Wait Between Retries: `15`
   - `Use TCP_NODELAY flag on the SSH connection`: check
   
 ![Nodes screenshot](readme-assets/jenkins-nodes.png)
@@ -81,7 +81,7 @@ ssh-keygen -t rsa -f jenkins_agent
 - Repository URL: project `jenkins-task` url
 - Branch Specified: `*/main`
 
-The `VERSION` with the artifact uploaded to the Artifactory is put in the `ARTIFACTORY.txt` in the Archive Artifacts.
+The `VERSION` parameter with the artifact uploaded to the Artifactory is put in the `ARTIFACTORY.txt` in the Archive Artifacts.
 
 ARTIFACTORY.txt:
 ```
@@ -99,12 +99,13 @@ Jenkins dashboard
 ### 3. Artifactory
 The Artifactory of the cloud version was used on the project (14-Day Trial).
 
-Jenkins settings for Artifactory (System > JFrog)
-- JFrog Platform Instances
-  - Instance ID: `artifactory`
-  - JFrog Platform URL: `https://blesstask.jfrog.io`
-  - Username: username for Artifactory
-  - Password: password for Artifactory
+Jenkins settings for Artifactory
+- System > JFrog
+  - JFrog Platform Instances
+    - Instance ID: `artifactory`
+    - JFrog Platform URL: `https://blesstask.jfrog.io`
+    - Username: username for Artifactory
+    - Password: password for Artifactory
 
 ![Artifactory screenshot](readme-assets/artifactory.png)
 
