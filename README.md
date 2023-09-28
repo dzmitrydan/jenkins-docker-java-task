@@ -16,7 +16,7 @@
 4. Project for pipeline [aircompany](https://github.com/dzmitrydan/aircompany)
 5. Artifactory (cloud, trial)
 
-##### Precondition
+#### Precondition
 - Docker with components is installed
 
 ### 1. Install and Run Jenkins With Docker Compose
@@ -34,11 +34,11 @@ Open bash shell of docker container:
 docker exec -it jenkins bash
 ```
 #### 1.2 Login and install suggested Jenkins plugins
-#### Install additional Jenkins Plugins
+#### 1.3 Install additional Jenkins Plugins
 - Artifactory Plugin
 - Warnings Next Generation Plugin
 
-#### 1.3 Install Jenkins with Agent by Docker Compose
+#### 1.4 Install Jenkins with Agent by Docker Compose
 Run Docker Compose:
 ```
 docker-compose -f jenkins-agent-docker-compose.yml up
@@ -48,18 +48,18 @@ Stop Docker Compose:
 docker-compose -f jenkins-agent-docker-compose.yml down
 ```
 
-#### 1.4 Generate SSH keys (public, private)
+#### 1.5 Generate SSH keys (public, private)
 ```
 ssh-keygen -t rsa -f jenkins_agent
 ```
 
-#### 1.5 In the Jenkins settings (Global credentials) add private SSH keys
+#### 1.6 In the Jenkins settings (Global credentials) add private SSH keys
 - SSH `Username with private key`
 - ID: `jenkins_agent`
 - Username: `jenkins`
 - Enter private SSH key`
 
-#### 1.6 Node settings:
+#### 1.7 Node settings:
 - Remote Root Directory: `/home/jenkins/agent`
 - Host: `agent`
 - Launch method: `Launch agents via SSH`
