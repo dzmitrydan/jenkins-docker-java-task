@@ -1,0 +1,17 @@
+pipeline {
+    stages {
+        stage('Archive Artifacts') {
+            steps {
+                script {
+                   def date = new Date()
+                   def data = "app version ${VERSION}\nhttps://blesstask.jfrog.io/ui/repos/tree/General/aircompany/${VERSION}\n" + date
+                   writeFile(file: 'ARTIFACTORY.txt', text: data)
+                   sh "ls -l"
+                }
+                archiveArtifacts allowEmptyArchive: true,
+                artifacts: 'ARTIFACTORY.txt, **/target/*SNAPSHOT.jar, **/test-results/test/TEST-*.xml',
+                followSymlinks: false
+            }
+        }
+    }
+}
