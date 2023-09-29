@@ -1,5 +1,21 @@
 pipeline {
     stages {
+
+        stage('Push into Artifactory') {
+                    steps {
+                        script {
+                            server = Artifactory.server 'artifactory'
+                            def uploadSpec = """{
+                                "files": [
+                                    {
+                                        "pattern": "**/target/*SNAPSHOT.jar",
+                                        "target": "aircompany/${VERSION}/"
+                                    }
+                                ]}"""
+                            server.upload(uploadSpec)
+                        }
+                    }
+        }
         stage('Archive Artifacts') {
             steps {
                 script {
