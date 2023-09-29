@@ -55,7 +55,8 @@ pipeline {
                         "files": [
                             {
                                 "pattern": "**/target/*SNAPSHOT.jar",
-                                "target": "aircompany/${VERSION}/"
+                                //"target": "aircompany/${VERSION}/"
+                                "target": "example-repo-local/${VERSION}/"
                             }
                         ]}"""
                     server.upload(uploadSpec)
